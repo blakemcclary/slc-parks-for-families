@@ -174,6 +174,16 @@
     }
     .btn-ghost:hover { color: var(--terra); }
 
+    /* ─── Section photos ─────────────────────────────── */
+    .section-photo img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      border-radius: 16px;
+      border-bottom: 5px solid rgba(0,0,0,0.12);
+      display: block;
+    }
+
     /* ─── Wave dividers ──────────────────────────────── */
     .waves { line-height: 0; overflow: hidden; display: block; margin-bottom: -1px; }
     .waves svg { display: block; width: 100%; }
@@ -184,14 +194,6 @@
       padding: 112px clamp(20px, 5vw, 60px) 0;
       position: relative;
       overflow: hidden;
-    }
-    #hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(circle, rgba(180,90,40,0.11) 1px, transparent 1px);
-      background-size: 28px 28px;
-      pointer-events: none;
     }
 
     .hero-inner {
@@ -233,7 +235,7 @@
     .hero-headline em { font-style: italic; color: var(--terra); }
 
     .hero-subhead {
-      font-size: clamp(1rem, 2vw, 1.12rem);
+      font-size: clamp(1rem, 2vw, 1.08rem);
       font-weight: 400;
       color: var(--ink-soft);
       max-width: 480px;
@@ -632,7 +634,7 @@
 
     /* ─── JOIN ───────────────────────────────────────── */
     #join {
-      background: var(--forest);
+      background: url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1600&q=80&fit=crop') center/cover no-repeat;
       padding: var(--section-pad);
       position: relative;
       overflow: hidden;
@@ -641,8 +643,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background-image: radial-gradient(circle, rgba(200,218,188,0.12) 1.5px, transparent 1.5px);
-      background-size: 32px 32px;
+      background: rgba(46, 80, 48, 0.88);
       pointer-events: none;
     }
 
@@ -853,16 +854,16 @@
   <section id="hero">
     <div class="hero-inner">
       <div class="hero-text">
-        <span class="hero-badge reveal">Salt Lake City &mdash; A family advocacy nonprofit</span>
+        <span class="hero-badge reveal">Salt Lake City &bull; Parent-led &bull; Nonpartisan</span>
         <h1 class="hero-headline reveal reveal-delay-1">
           Salt Lake City is growing.<br><em>Not for families.</em>
         </h1>
         <p class="hero-subhead reveal reveal-delay-2">
-          We're working to make SLC a city where families stay &mdash; through parks that work and homes they can own.
+          We fight for two things: parks families can actually use, and homes they can afford to own. No party politics. Just parents who want SLC to work for their kids.
         </p>
         <div class="hero-actions reveal reveal-delay-3">
           <a href="#join" class="btn-primary">Get involved &rarr;</a>
-          <a href="#problem" class="btn-ghost">Read why this matters</a>
+          <a href="#problem" class="btn-ghost">Why this matters</a>
         </div>
       </div>
 
@@ -871,21 +872,21 @@
           <div class="pillar-card-icon">&#127807;</div>
           <div class="pillar-card-body">
             <h3>Parks that work</h3>
-            <p>When parks work, families stay. When they fail, families leave.</p>
+            <p>Clean, safe, maintained — every neighborhood. When parks work, families stay. When they don't, families leave quietly.</p>
           </div>
         </div>
         <div class="pillar-card housing">
           <div class="pillar-card-icon">&#127968;</div>
           <div class="pillar-card-body">
             <h3>Homes families can own</h3>
-            <p>No park or amenity will keep families here if they can't afford to buy a home with space for their kids.</p>
+            <p>No amenity keeps families here if they can't buy a home with room for their kids. Ownership is the anchor.</p>
           </div>
         </div>
         <div class="pillar-card" style="border-color: var(--cream-warm);">
           <div class="pillar-card-icon">&#128100;</div>
           <div class="pillar-card-body">
             <h3>Parent-led. Nonpartisan.</h3>
-            <p>Families are a constituency worth designing for. We're making sure SLC treats them that way.</p>
+            <p>Families are a constituency. We show up at city hall to make sure SLC's decisions reflect that.</p>
           </div>
         </div>
       </div>
@@ -897,15 +898,15 @@
     <div class="hero-stat-row">
       <div class="hero-stat">
         <div class="stat-big">4</div>
-        <div class="stat-text">Elementary schools closed in SLC in 2024 due to declining enrollment</div>
+        <div class="stat-text">Elementary schools closed in SLC in 2024. The families didn't disappear. They moved.</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-big">0</div>
+        <div class="stat-text">Organized, sustained family advocacy in Salt Lake City. Until now.</div>
       </div>
       <div class="hero-stat">
         <div class="stat-big">2</div>
-        <div class="stat-text">Pillars: parks and housing &mdash; the two things families need most</div>
-      </div>
-      <div class="hero-stat">
-        <div class="stat-big">Now</div>
-        <div class="stat-text">Without intentional action, SLC's family population will keep shrinking</div>
+        <div class="stat-text">Levers that change everything: parks families can use and homes families can own.</div>
       </div>
     </div>
   </div>
@@ -923,16 +924,16 @@
       <div class="problem-text">
         <span class="eyebrow eyebrow-terra reveal">Why We Exist</span>
         <h2 class="section-headline reveal reveal-delay-1">
-          SLC is growing.<br><em>Not for families.</em>
+          Families are leaving.<br><em>Nobody's fighting for them to stay.</em>
         </h2>
         <p class="body-text reveal reveal-delay-2">
-          In 2024, Salt Lake City closed four elementary schools due to declining enrollment. Families are quietly voting with their feet. The urban core is losing the conditions that make it viable to raise children.
+          In 2024, Salt Lake City closed four elementary schools. Not because of budget cuts. Because the kids weren't there. Families are leaving the urban core, and the city has no organized voice fighting to keep them.
         </p>
         <blockquote class="pull-quote reveal reveal-delay-2">
-          "Two things sit at the center of that equation: parks and housing."
+          "Two things sit at the center of that equation: parks families can use and homes families can own."
         </blockquote>
         <p class="body-text reveal reveal-delay-3">
-          That has to change.
+          We're here to change that.
         </p>
       </div>
 
@@ -940,17 +941,17 @@
         <div class="fact-card reveal reveal-delay-1">
           <div class="fact-icon">&#127981;</div>
           <h4>4 schools closed in 2024</h4>
-          <p>SLC closed four elementary schools due to declining enrollment &mdash; a direct signal of family outmigration from the urban core.</p>
+          <p>Four SLC elementary schools shut down last year. Not from budget cuts, but from empty desks. Families left, and took the next generation with them.</p>
         </div>
         <div class="fact-card reveal reveal-delay-2">
           <div class="fact-icon">&#128106;</div>
-          <h4>Families are choosing elsewhere</h4>
-          <p>The metro is booming, but the share of residents with school-age children is shrinking. Growing without growing its next generation.</p>
+          <h4>The metro is booming. Families aren't.</h4>
+          <p>SLC keeps growing in population, investment, and profile. But the share of households with school-age children keeps shrinking. A city can grow and still hollow out.</p>
         </div>
         <div class="fact-card reveal reveal-delay-3">
           <div class="fact-icon">&#128179;</div>
-          <h4>Public priorities, misaligned</h4>
-          <p>Parks underfunded. Zoning ignores family-scale housing. Families aren't at the table. We're changing that.</p>
+          <h4>Families have no seat at the table</h4>
+          <p>Parks are underfunded. Zoning ignores family-scale housing. City decisions get made without a sustained family voice. That's the gap we're here to fill.</p>
         </div>
       </div>
     </div>
@@ -970,39 +971,39 @@
         <div>
           <span class="eyebrow reveal">Parks</span>
           <h2 class="section-headline reveal reveal-delay-1">
-            The fundamentals<br>families <em>depend on</em>
+            Parks that are actually<br><em>worth showing up to</em>
           </h2>
+          <p class="focus-desc reveal reveal-delay-2">
+            Not new parks. Better ones. We push for the basics every family deserves, and we hold the city accountable for delivering them.
+          </p>
         </div>
-        <p class="focus-desc reveal reveal-delay-2">
-          Practical, achievable changes that make parks actually usable &mdash; and holding the city accountable for delivering them.
-        </p>
       </div>
 
       <div class="focus-grid">
         <div class="focus-item reveal reveal-delay-1">
           <div class="focus-num">01</div>
           <h3>Consistent maintenance</h3>
-          <p>Trash picked up, equipment repaired, graffiti removed &mdash; reliably, in every neighborhood.</p>
+          <p>Trash picked up. Equipment fixed. Graffiti gone. In every neighborhood, not just the ones that get attention.</p>
         </div>
         <div class="focus-item reveal reveal-delay-2">
           <div class="focus-num">02</div>
-          <h3>Clean, reliable restrooms</h3>
-          <p>A locked or filthy bathroom determines whether a family stays for an hour or ten minutes.</p>
+          <h3>Clean, open restrooms</h3>
+          <p>A locked or filthy bathroom ends a family's visit. It's a small thing with an outsized impact on whether parks get used.</p>
         </div>
         <div class="focus-item reveal reveal-delay-3">
           <div class="focus-num">03</div>
-          <h3>Safe play environments</h3>
-          <p>Free from hazards and unlawful activity &mdash; so kids can move freely and parents aren't on edge.</p>
+          <h3>Safe places to play</h3>
+          <p>Kids should be able to run around without parents on edge. That means real attention to safety, not just lip service.</p>
         </div>
         <div class="focus-item reveal reveal-delay-2">
           <div class="focus-num">04</div>
-          <h3>Accountable public spending</h3>
-          <p>We publish park condition assessments, track maintenance budgets, and show up at city council.</p>
+          <h3>Shade, water & modern playgrounds</h3>
+          <p>Three hundred days of sun is an asset, unless there's no shade. Splash pads and tree canopy aren't luxuries in a desert city.</p>
         </div>
         <div class="focus-item reveal reveal-delay-3">
           <div class="focus-num">05</div>
-          <h3>Shade, water play & modern playgrounds</h3>
-          <p>In a high-desert city with 300 days of sun, splash pads and tree canopy aren't extras.</p>
+          <h3>Public accountability</h3>
+          <p>We publish park condition reports, track maintenance budgets, and show up at city council. Advocacy without data is just noise.</p>
         </div>
       </div>
     </div>
@@ -1021,34 +1022,34 @@
       <div>
         <span class="eyebrow reveal">Housing</span>
         <h2 class="section-headline reveal reveal-delay-1">
-          Homes families<br>can <em>own</em>
+          The housing conversation<br>is missing <em>families</em>
         </h2>
+        <p class="housing-desc reveal reveal-delay-2">
+          Everyone's talking about density. Almost no one's talking about family-scale housing. There's a difference between adding units and building a city where families can put down roots.
+        </p>
       </div>
-      <p class="housing-desc reveal reveal-delay-2">
-        The housing conversation focuses on density and rentals. That's not enough. Families need something specific: homes they can own, with space to live in.
-      </p>
     </div>
 
     <div class="housing-grid reveal reveal-delay-1">
       <div class="housing-item">
         <div class="housing-item-icon">&#127963;</div>
-        <h3>Multi-bedroom for-sale as a planning priority</h3>
-        <p>Townhomes and multi-bedroom for-sale product should be explicit priorities in zoning decisions &mdash; not afterthoughts.</p>
+        <h3>Multi-bedroom for-sale housing</h3>
+        <p>Townhomes and for-sale homes with room for kids should be an explicit planning priority, not an afterthought when studios fill up.</p>
       </div>
       <div class="housing-item">
         <div class="housing-item-icon">&#128209;</div>
-        <h3>Zoning for family-scale density</h3>
-        <p>Row houses, cottage clusters, townhomes in walkable neighborhoods. Smart density that includes families, not pushes them out.</p>
+        <h3>Density that includes families</h3>
+        <p>Row houses, cottage clusters, townhomes in walkable neighborhoods. Growth that makes room for families, not growth that prices them out.</p>
       </div>
       <div class="housing-item">
         <div class="housing-item-icon">&#128273;</div>
-        <h3>Homeownership pathways</h3>
-        <p>Renting doesn't build the stability and equity that ties families to a place. We advocate for policies that make ownership achievable.</p>
+        <h3>A path to ownership</h3>
+        <p>Renting doesn't build roots. Ownership ties families to a place and gives them a stake in it. We push for policies that make that possible.</p>
       </div>
       <div class="housing-item">
         <div class="housing-item-icon">&#128683;</div>
-        <h3>Protect family-sized housing stock</h3>
-        <p>Oppose policies that crowd out owner-occupied housing in favor of investor-owned or short-term rental conversions.</p>
+        <h3>Protect what already exists</h3>
+        <p>Family-sized homes are disappearing to investor conversions and short-term rentals. Protecting existing stock is just as important as building new.</p>
       </div>
     </div>
   </section>
@@ -1066,10 +1067,10 @@
       <div>
         <span class="eyebrow reveal">Our Approach</span>
         <h2 class="section-headline reveal reveal-delay-1">
-          Nonpartisan.<br>Practical.<br><em>Pro-family.</em>
+          Not left. Not right.<br><em>Pro-family.</em>
         </h2>
         <p class="body-text reveal reveal-delay-2">
-          We are not anti-growth. We believe SLC can grow and remain a city for families &mdash; but only if families are treated as a constituency worth designing for. That means smart density that includes family-scale product, and public safety approaches that pair accountability with real social services.
+          We're not anti-growth. We think SLC can grow and still be a city where families thrive, but only if someone is consistently making that case. Safe parks and family-scale housing aren't partisan issues. They're what every parent wants, regardless of how they vote.
         </p>
       </div>
 
@@ -1078,127 +1079,65 @@
           <div class="approach-pillar-icon">&#9878;&#65039;</div>
           <div class="approach-pillar-text">
             <h4>Nonpartisan by design</h4>
-            <p>Safe parks and family-scale housing aren't left or right issues. We welcome anyone who believes cities need children.</p>
+            <p>We don't endorse candidates or align with parties. We align with parents, whoever they are and however they vote.</p>
           </div>
         </div>
         <div class="approach-pillar">
           <div class="approach-pillar-icon">&#127963;</div>
           <div class="approach-pillar-text">
             <h4>Pro-growth, pro-family</h4>
-            <p>We support density that includes families &mdash; townhomes, row houses, cottage clusters. Growth that builds the city, not hollows it out.</p>
+            <p>We support a growing SLC. We just insist that growth make room for families, not squeeze them out.</p>
           </div>
         </div>
         <div class="approach-pillar">
           <div class="approach-pillar-icon">&#128203;</div>
           <div class="approach-pillar-text">
-            <h4>Evidence-based advocacy</h4>
-            <p>We publish assessments, track budgets, and show up at city council. Credibility built slowly, on purpose.</p>
+            <h4>Show up and stay</h4>
+            <p>We publish assessments, track budgets, and appear at city council, not once but consistently. That's how advocacy actually works.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- WAVES: terra → cream-warm -->
+  <!-- WAVES: terra → forest -->
   <div class="waves" style="background: var(--terra);">
     <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-      <path d="M0,80 L0,45 Q360,5 720,35 Q1080,65 1440,20 L1440,80 Z" fill="#EDE0C4"/>
-    </svg>
-  </div>
-
-  <!-- WHY NOW -->
-  <section id="why-now">
-    <div class="why-inner">
-      <div class="why-intro">
-        <div>
-          <span class="eyebrow reveal">Why Now</span>
-          <h2 class="section-headline reveal reveal-delay-1">
-            Without intentional action,<br>the trend <em>will continue</em>
-          </h2>
-          <p class="body-text reveal reveal-delay-2">
-            SLC is growing, but its family population is shrinking. Once a city loses its critical mass of families, the dynamics are hard to reverse. The time to act is before the tipping point, not after.
-          </p>
-
-          <div class="tension-bar reveal reveal-delay-3">
-            <div class="tension-item">
-              <span class="tension-label">City growth</span>
-              <div class="tension-track">
-                <div class="tension-fill grow" style="--target-width: 82%"></div>
-              </div>
-              <span class="tension-value">&#8593; 82%</span>
-            </div>
-            <div class="tension-item">
-              <span class="tension-label">Families</span>
-              <div class="tension-track">
-                <div class="tension-fill shrink" style="--target-width: 38%"></div>
-              </div>
-              <span class="tension-value">&#8595; 38%</span>
-            </div>
-          </div>
-          <p style="font-size:0.72rem; color: var(--ink-muted); margin-top:8px;">Illustrative of the population trend divergence, not official figures.</p>
-        </div>
-
-        <div class="why-text-block reveal reveal-delay-2">
-          <h3>A city that grows without families loses something essential.</h3>
-          <p>Families aren't just residents &mdash; they're a city's stake in its own future. Better parks and family-scale housing don't require a budget windfall. They require advocates at the table, consistently.</p>
-        </div>
-      </div>
-
-      <div class="why-callout reveal">
-        <div class="callout-item">
-          <div class="callout-num">4</div>
-          <div class="callout-label">Elementary schools closed in 2024 due to enrollment decline</div>
-        </div>
-        <div class="callout-item">
-          <div class="callout-num">2</div>
-          <div class="callout-label">Immediate levers: parks and housing &mdash; both need family advocates now</div>
-        </div>
-        <div class="callout-item">
-          <div class="callout-num">0</div>
-          <div class="callout-label">Organized, sustained family advocacy in SLC today. That's why we exist.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WAVES: cream-warm → forest -->
-  <div class="waves" style="background: var(--cream-warm);">
-    <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-      <path d="M0,80 L0,40 Q360,0 720,30 Q1080,60 1440,15 L1440,80 Z" fill="#2E5030"/>
+      <path d="M0,80 L0,45 Q360,5 720,35 Q1080,65 1440,20 L1440,80 Z" fill="#2E5030"/>
     </svg>
   </div>
 
   <!-- JOIN -->
   <section id="join">
     <div class="join-inner">
-      <span class="eyebrow reveal">Our Invitation</span>
+      <span class="eyebrow reveal">Join Us</span>
       <h2 class="join-headline reveal reveal-delay-1">
-        Together, we can make SLC<br>a city where <em>families stay.</em>
+        SLC can be a city<br>where <em>families choose to stay.</em>
       </h2>
       <p class="join-body reveal reveal-delay-2">
-        Both levers &mdash; parks and housing &mdash; need advocates focused on what families need. That's us, and we want you with us.
+        That won't happen on its own. It takes parents showing up: at city council, in the budget process, in the conversation. If you believe SLC should make room for families, we want you with us.
       </p>
 
       <div class="join-beliefs reveal reveal-delay-2">
         <div class="belief">
           <div class="belief-dot"></div>
-          <span>Cities need children to thrive</span>
+          <span>A city without children isn't growing. It's hollowing out</span>
         </div>
         <div class="belief">
           <div class="belief-dot"></div>
-          <span>Families should not have to leave to find safe places to play</span>
+          <span>Families shouldn't have to move to the suburbs to find a park that works</span>
         </div>
         <div class="belief">
           <div class="belief-dot"></div>
-          <span>Public spaces and housing policy should reflect public priorities</span>
+          <span>Owning a home in SLC should be possible for the families who want to raise kids here</span>
         </div>
       </div>
 
       <form class="join-form reveal reveal-delay-3" onsubmit="handleJoin(event)">
         <input type="email" class="join-input" placeholder="your@email.com" required />
-        <button type="submit" class="btn-join">Join us &rarr;</button>
+        <button type="submit" class="btn-join">Count me in &rarr;</button>
       </form>
-      <p class="join-fine reveal reveal-delay-4">No spam. No political affiliations. Just parents who want SLC to work for families.</p>
+      <p class="join-fine reveal reveal-delay-4">No spam. No party politics. Just parents who want SLC to work for families.</p>
     </div>
   </section>
 
@@ -1226,7 +1165,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p class="footer-copy">&copy; 2025 Raised in SLC. All rights reserved.</p>
+      <p class="footer-copy">&copy; 2026 Raised in SLC. All rights reserved.</p>
       <p class="footer-disclaimer">A nonpartisan, parent-led advocacy organization. Not affiliated with Salt Lake City government or any political party.</p>
     </div>
   </footer>
@@ -1242,14 +1181,6 @@
 
     // Hero elements visible on load
     document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('visible'));
-
-    // Tension bar animation
-    const barObserver = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { setTimeout(() => e.target.classList.add('animated'), 250); barObserver.unobserve(e.target); }
-      });
-    }, { threshold: 0.5 });
-    document.querySelectorAll('.tension-fill').forEach(b => barObserver.observe(b));
 
     // Join form
     function handleJoin(e) {
