@@ -11,25 +11,27 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --terra:        #C4623A;
-      --terra-dark:   #9E4A28;
-      --terra-light:  #D97848;
-      --terra-pale:   #F2C9A8;
-      --sage:         #6A9060;
-      --sage-dark:    #4E6E46;
-      --sage-light:   #88B07A;
-      --sage-pale:    #C8DABC;
-      --forest:       #2E5030;
-      --sky:          #3A7EA8;
-      --sky-dark:     #2A5E80;
-      --sky-light:    #5A9EC8;
-      --sky-pale:     #C0D8EC;
-      --cream:        #F5EDD5;
-      --cream-warm:   #EDE0C4;
+      --terra:        #B85C38;
+      --terra-dark:   #8E4228;
+      --terra-light:  #D07248;
+      --terra-pale:   #EABDA4;
+      --sage:         #97C459;
+      --sage-dark:    #6E9038;
+      --sage-light:   #B2D47A;
+      --sage-pale:    #D6EAB4;
+      --forest:       #3B6D11;
+      --forest-dark:  #2A5009;
+      --forest-light: #527E2A;
+      --sky:          #B85C38;
+      --sky-dark:     #8E4228;
+      --sky-light:    #D07248;
+      --sky-pale:     #EABDA4;
+      --cream:        #F7F3EE;
+      --cream-warm:   #EDE8E0;
       --gold:         #D4A830;
-      --ink:          #1C1408;
-      --ink-soft:     #3A2C18;
-      --ink-muted:    #6B5840;
+      --ink:          #2C2C2A;
+      --ink-soft:     #474743;
+      --ink-muted:    #7A7A76;
       --white:        #FDFAF4;
 
       --font-display: 'Fraunces', Georgia, serif;
@@ -69,13 +71,13 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      background: var(--terra);
+      background: var(--forest);
       padding: 0 clamp(20px, 5vw, 52px);
       height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 4px 0 var(--terra-dark);
+      box-shadow: 0 4px 0 var(--forest-dark);
     }
 
     .nav-logo {
@@ -93,7 +95,7 @@
       font-family: var(--font-body);
       letter-spacing: 0.07em;
       text-transform: uppercase;
-      color: var(--terra-pale);
+      color: var(--sage-pale);
     }
 
     .nav-cta {
@@ -101,7 +103,7 @@
       align-items: center;
       gap: 6px;
       background: var(--white);
-      color: var(--terra-dark);
+      color: var(--forest-dark);
       font-family: var(--font-body);
       font-size: 0.82rem;
       font-weight: 800;
@@ -109,7 +111,7 @@
       text-transform: uppercase;
       padding: 10px 22px;
       border-radius: 100px;
-      border-bottom: 4px solid var(--terra-dark);
+      border-bottom: 4px solid var(--forest-dark);
       transition: transform 0.15s, border-width 0.15s;
     }
     .nav-cta:hover { transform: translateY(2px); border-bottom-width: 1px; }
@@ -147,7 +149,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--terra);
+      background: var(--forest);
       color: var(--white);
       font-family: var(--font-body);
       font-size: 0.9rem;
@@ -156,7 +158,7 @@
       text-transform: uppercase;
       padding: 14px 30px;
       border-radius: 100px;
-      border-bottom: 5px solid var(--terra-dark);
+      border-bottom: 5px solid var(--forest-dark);
       transition: transform 0.15s, border-width 0.15s;
     }
     .btn-primary:hover { transform: translateY(3px); border-bottom-width: 2px; }
@@ -168,11 +170,11 @@
       color: var(--ink-soft);
       font-size: 0.88rem;
       font-weight: 600;
-      border-bottom: 2px solid var(--terra);
+      border-bottom: 2px solid var(--forest);
       padding-bottom: 2px;
       transition: color 0.2s;
     }
-    .btn-ghost:hover { color: var(--terra); }
+    .btn-ghost:hover { color: var(--forest); }
 
     /* ─── Section photos ─────────────────────────────── */
     .section-photo img {
@@ -211,7 +213,7 @@
 
     .hero-badge {
       display: inline-block;
-      background: var(--terra);
+      background: var(--forest);
       color: var(--white);
       font-family: var(--font-body);
       font-size: 0.7rem;
@@ -232,7 +234,7 @@
       line-height: 1.03;
       margin-bottom: 24px;
     }
-    .hero-headline em { font-style: italic; color: var(--terra); }
+    .hero-headline em { font-style: italic; color: var(--sage); }
 
     .hero-subhead {
       font-size: clamp(1rem, 2vw, 1.08rem);
@@ -342,10 +344,10 @@
       margin: 0 auto;
     }
 
-    .eyebrow-terra { color: var(--terra); }
+    .eyebrow-terra { color: var(--forest); }
 
     .pull-quote {
-      border-left: 4px solid var(--terra);
+      border-left: 4px solid var(--forest);
       padding: 8px 0 8px 22px;
       margin: 28px 0;
       font-family: var(--font-display);
@@ -506,7 +508,7 @@
 
     /* ─── APPROACH ───────────────────────────────────── */
     #approach {
-      background: var(--terra);
+      background: var(--forest);
       padding: var(--section-pad);
     }
 
@@ -519,7 +521,7 @@
       align-items: center;
     }
 
-    #approach .eyebrow { color: var(--terra-pale); }
+    #approach .eyebrow { color: var(--sage-pale); }
     #approach .section-headline { color: var(--white); }
     #approach .section-headline em { font-style: italic; color: var(--cream); }
     #approach .body-text { color: rgba(253,250,244,0.75); }
@@ -580,7 +582,7 @@
       margin-bottom: 52px;
     }
 
-    #why-now .eyebrow { color: var(--terra); }
+    #why-now .eyebrow { color: var(--forest); }
 
     .tension-bar { display: flex; flex-direction: column; gap: 14px; margin: 28px 0 6px; }
     .tension-item { display: flex; gap: 14px; align-items: center; }
@@ -594,12 +596,12 @@
     }
     .tension-track { flex: 1; height: 10px; background: rgba(30,22,8,0.1); border-radius: 100px; overflow: hidden; }
     .tension-fill { height: 100%; border-radius: 100px; width: 0; transition: width 1.3s cubic-bezier(0.16, 1, 0.3, 1); }
-    .tension-fill.grow   { background: var(--sky); }
+    .tension-fill.grow   { background: var(--sage); }
     .tension-fill.shrink { background: var(--terra); }
     .tension-fill.animated { width: var(--target-width); }
     .tension-value { font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; color: var(--ink); min-width: 38px; text-align: right; }
 
-    .why-text-block { border-left: 4px solid var(--terra); padding-left: 24px; }
+    .why-text-block { border-left: 4px solid var(--forest); padding-left: 24px; }
     .why-text-block h3 {
       font-family: var(--font-display);
       font-variation-settings: 'opsz' 48;
@@ -626,7 +628,7 @@
       font-variation-settings: 'opsz' 72;
       font-size: 2.8rem;
       font-weight: 900;
-      color: var(--terra);
+      color: var(--forest);
       line-height: 1;
       margin-bottom: 10px;
     }
@@ -720,7 +722,7 @@
     .join-input:focus { background: rgba(253,250,244,0.15); border-color: rgba(253,250,244,0.45); }
 
     .btn-join {
-      background: var(--terra);
+      background: var(--forest);
       color: var(--white);
       font-family: var(--font-body);
       font-size: 0.9rem;
@@ -730,7 +732,7 @@
       padding: 14px 28px;
       border: none;
       border-radius: 100px;
-      border-bottom: 5px solid var(--terra-dark);
+      border-bottom: 5px solid var(--forest-dark);
       cursor: pointer;
       transition: transform 0.15s, border-width 0.15s;
       white-space: nowrap;
@@ -772,7 +774,7 @@
       font-family: var(--font-body);
       letter-spacing: 0.07em;
       text-transform: uppercase;
-      color: var(--terra-pale);
+      color: var(--sage-pale);
       margin-top: 3px;
     }
 
@@ -787,8 +789,8 @@
       color: rgba(253,250,244,0.3);
       margin-bottom: 12px;
     }
-    .footer-col a { display: block; font-size: 0.9rem; color: var(--terra-pale); transition: color 0.2s; margin-bottom: 6px; }
-    .footer-col a:hover { color: var(--terra-light); }
+    .footer-col a { display: block; font-size: 0.9rem; color: var(--sage-pale); transition: color 0.2s; margin-bottom: 6px; }
+    .footer-col a:hover { color: var(--sage-light); }
     .footer-col p { font-size: 0.84rem; color: rgba(253,250,244,0.42); line-height: 1.6; max-width: 260px; }
 
     .footer-bottom {
@@ -929,7 +931,7 @@
   <!-- WAVES: cream → sage -->
   <div class="waves" style="background: var(--cream);">
     <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-      <path d="M0,80 L0,40 Q360,0 720,30 Q1080,60 1440,15 L1440,80 Z" fill="#6A9060"/>
+      <path d="M0,80 L0,40 Q360,0 720,30 Q1080,60 1440,15 L1440,80 Z" fill="#97C459"/>
     </svg>
   </div>
 
@@ -981,7 +983,7 @@
   <!-- WAVES: sage → sky/blue -->
   <div class="waves" style="background: var(--sage);">
     <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-      <path d="M0,80 L0,45 Q360,5 720,35 Q1080,65 1440,20 L1440,80 Z" fill="#3A7EA8"/>
+      <path d="M0,80 L0,45 Q360,5 720,35 Q1080,65 1440,20 L1440,80 Z" fill="#B85C38"/>
     </svg>
   </div>
 
@@ -1026,7 +1028,7 @@
   <!-- WAVES: sky → terracotta -->
   <div class="waves" style="background: var(--sky);">
     <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-      <path d="M0,80 L0,40 Q360,0 720,30 Q1080,60 1440,10 L1440,80 Z" fill="#C4623A"/>
+      <path d="M0,80 L0,40 Q360,0 720,30 Q1080,60 1440,10 L1440,80 Z" fill="#3B6D11"/>
     </svg>
   </div>
 
@@ -1070,9 +1072,9 @@
   </section>
 
   <!-- WAVES: terra → forest -->
-  <div class="waves" style="background: var(--terra);">
+  <div class="waves" style="background: var(--forest);">
     <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-      <path d="M0,80 L0,45 Q360,5 720,35 Q1080,65 1440,20 L1440,80 Z" fill="#2E5030"/>
+      <path d="M0,80 L0,45 Q360,5 720,35 Q1080,65 1440,20 L1440,80 Z" fill="#3B6D11"/>
     </svg>
   </div>
 
