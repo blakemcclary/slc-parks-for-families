@@ -329,11 +329,12 @@ footer{background:var(--ink)}
 /* (1) mama duck + duckling are baked into the hero lockup (top-left), replacing the house — static */
 
 /* (2) hero inline email signup */
-.hero-join{display:flex;gap:12px;margin-top:30px;max-width:440px;flex-wrap:wrap}
+.hero-join{display:flex;gap:12px;margin-top:30px;max-width:460px;flex-wrap:wrap}
 .hero-join input{flex:1;min-width:200px;background:var(--cream);border:2.5px solid var(--ink);padding:14px 16px;font-family:inherit;font-size:.95rem;color:var(--ink);outline:none}
 .hero-join input:focus{border-color:var(--green)}
 .hero-join input::placeholder{color:#7d6c4a}
 .hero-join .btn{padding:14px 22px}
+@media(min-width:601px){.hero-join input[type=email]{min-width:150px}.hero-join input.zip{flex:0 0 96px;min-width:0}}
 .hero-join-fine{font-size:.8rem;color:var(--brown);margin-top:12px}
 .hero-join-fine a{border-bottom:2px solid var(--ink);font-weight:600}
 
@@ -514,6 +515,7 @@ nav.nav-hidden{transform:translateY(-115%)}
       <p class="hero-sub pop in d2">We fight for two things: parks your kids can actually use, and homes they can afford to own. No party politics. Just parents who want SLC to work for their kids.</p>
       <form class="hero-join pop in d3" onsubmit="handleJoin(event)">
         <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address"/>
+        <input type="text" name="zip" class="zip" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" title="5-digit ZIP" placeholder="ZIP" aria-label="ZIP code (optional)"/>
         <!-- honeypot: hidden from humans, catches bots -->
         <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0"/>
         <button type="submit" class="btn">Count me in →</button>
