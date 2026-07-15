@@ -741,11 +741,11 @@ let buf='';addEventListener('keydown',e=>{buf=(buf+e.key).slice(-3).toLowerCase(
 async function handleJoin(e){
   e.preventDefault();
   const form=e.target,input=form.querySelector('input[type=email]'),zip=form.querySelector('input[name=zip]'),hp=form.querySelector('input[name=company]'),btn=form.querySelector('button');
-  btn.textContent='Sending…';btn.disabled=true;
+  btn.style.minWidth=btn.offsetWidth+'px';btn.textContent='Sending…';btn.disabled=true;
   try{
     const res=await fetch('/api/subscribe',{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify({email:input.value,zip:zip&&zip.value||undefined,company:hp&&hp.value||undefined})});
     if(!res.ok)throw 0;
-    btn.textContent="Check your inbox!";btn.classList.add('joined');
+    btn.textContent="Sent!";btn.classList.add('joined');
     input.value='';input.placeholder='Check your email to confirm';input.disabled=true;
     if(zip){zip.disabled=true;const zw=zip.closest('.join-input-wrap')||zip;zw.style.display='none';}
     paperConfetti(34,form.getBoundingClientRect());
