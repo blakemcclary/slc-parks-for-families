@@ -1,0 +1,7 @@
+{
+  "name": "raised-in-slc",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static site + waitlist API (Resend double opt-in) for raisedinslc.org",
+  "type": "module"
+}

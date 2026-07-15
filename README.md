@@ -35,15 +35,37 @@ python3 -m http.server
 
 ## Deploying
 
-The site is hosted on **GitHub Pages**. Pushes to `main` deploy automatically via the CNAME file pointing to `raisedinslc.org`.
+Hosted on **Vercel** (project `slc-parks-for-families`). The static `index.html`
+is served as-is and the `api/` folder runs as serverless functions. Pushes to
+`main` deploy automatically once the GitHub repo is connected to the Vercel
+project and DNS for `raisedinslc.org` points at Vercel.
+
+## Waitlist signup (Resend, double opt-in)
+
+Email signup uses a two-step confirmation to keep spam out of the list:
+
+1. Visitor submits the form → `POST /api/subscribe` validates the address and
+   emails a confirmation link (a stateless HMAC token — no database needed).
+2. Visitor clicks the link → `GET /api/confirm` verifies the token and adds the
+   address to a **Resend Audience** (the confirmed waitlist), then redirects to
+   `confirmed.html`.
+
+A hidden honeypot field (`company`) on each form catches basic bots.
+
+Required environment variables (see `.env.example`): `RESEND_API_KEY`,
+`RESEND_AUDIENCE_ID`, `SIGNING_SECRET`, `RESEND_FROM`.
+
+> Sending to real signups requires a **verified sending domain** in Resend
+> (DKIM/SPF DNS records at the domain's DNS provider). Until then Resend's
+> `onboarding@resend.dev` only delivers to the account owner's own address.
 
 ## Key integrations
 
 | Integration | Purpose | Config location |
 |---|---|---|
 | Google Analytics 4 | Page analytics | GA tag in `<head>` (ID: `G-ZC7HTN3EQ1`) |
-| Formspree | Email signup form | Form `action` URL in `#join` section |
-| Google Fonts | Fraunces + Nunito typefaces | `<link>` in `<head>` |
+| Resend | Waitlist signup + email confirmation | `api/subscribe.js`, `api/confirm.js` |
+| Google Fonts | Fraunces + Space Grotesk typefaces | `<link>` in `<head>` |
 
 ## Contact
 

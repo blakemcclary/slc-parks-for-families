@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>You're in — Raised in SLC</title>
+<meta name="robots" content="noindex"/>
+<link rel="icon" type="image/png" href="assets/favicon-duck-64.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  /* mid-century palette pulled from the RISLC art */
+  --cream:#EFE6CE; --paper:#F3ECD6;
+  --pink:#E6519B; --pink-soft:#E89CC4;
+  --blue:#3F57C4; --blue-2:#5E77D6;
+  --olive:#8C8A2E; --olive-deep:#6E6C22;
+  --green:#2E7D4F; --green-deep:#1F5E3A;
+  --mustard:#E0A92E; --orange:#E0683A; --terra:#C44A2E;
+  --brown:#43301F; --ink:#2B2216;
+  --grain:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.62" numOctaves="3" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.07 0"/></filter><rect width="300" height="300" filter="url(%23n)"/></svg>');
+}
+html,body{height:100%}
+body{
+  font-family:'Space Grotesk',system-ui,sans-serif;color:var(--paper);
+  background:var(--bg,var(--green));line-height:1.7;overflow-x:hidden;
+}
+body::before{content:"";position:fixed;inset:0;background-image:var(--grain);pointer-events:none;z-index:999;mix-blend-mode:multiply;opacity:.9}
+/* subtle two-tone panel seam, like the parks section */
+body::after{content:"";position:fixed;top:0;bottom:0;left:58%;right:0;background:rgba(243,236,214,.07);pointer-events:none}
+
+.wrap{
+  position:relative;min-height:100%;max-width:760px;margin:0 auto;
+  padding:clamp(48px,9vh,96px) clamp(22px,6vw,48px) 72px;
+  display:flex;flex-direction:column;justify-content:center;
+}
+
+.chip{
+  align-self:flex-start;display:inline-block;font-size:.74rem;font-weight:700;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--ink);
+  background:var(--chip,var(--mustard));padding:10px 20px;margin-bottom:30px;
+  box-shadow:7px 7px 0 rgba(43,34,22,.24);
+}
+h1{
+  font-family:'Fraunces',Georgia,serif;font-weight:900;
+  font-size:clamp(2.3rem,7vw,3.6rem);line-height:1.12;margin-bottom:26px;
+  max-width:15ch;
+}
+.hl{display:inline-block;background:var(--hl,var(--mustard));color:var(--hl-ink,var(--ink));padding:.02em .24em;box-shadow:7px 7px 0 rgba(43,34,22,.22)}
+p.lead{font-size:1.06rem;max-width:52ch;margin-bottom:40px;color:var(--lead,#D9E6DC)}
+
+.btn{
+  align-self:flex-start;display:inline-block;font-weight:700;font-size:.88rem;
+  letter-spacing:.05em;text-transform:uppercase;color:var(--paper);
+  background:var(--btn,var(--terra));padding:18px 34px;border:none;cursor:pointer;
+  font-family:inherit;text-decoration:none;box-shadow:9px 9px 0 rgba(43,34,22,.3);
+  transition:transform .14s ease-out,box-shadow .14s ease-out;
+}
+.btn:hover{transform:translate(-3px,-3px);box-shadow:13px 13px 0 rgba(43,34,22,.32)}
+
+/* ── cut-paper art (the site's own assets) ── */
+img{display:block;max-width:100%;height:auto;width:auto}
+
+/* success: the parks kite, drifting top-right like on the main page */
+.art-kite{
+  position:absolute;top:clamp(8px,4vh,40px);right:clamp(4px,4vw,40px);
+  width:clamp(110px,17vw,170px);transform-origin:52% 16%;pointer-events:none;
+  filter:drop-shadow(6px 8px 0 rgba(43,34,22,.18));
+}
+@media(prefers-reduced-motion:no-preference){.art-kite{animation:kitesway 6s steps(4) infinite}}
+@keyframes kitesway{0%,100%{transform:rotate(-3.5deg) translateY(0)}50%{transform:rotate(3deg) translateY(7px)}}
+
+/* expired: the snail, mid-crawl with its trail — going back takes a while */
+.art-snail-track{position:relative;height:110px;margin-bottom:12px;display:none}
+.art-snail-track img{position:absolute;bottom:0;left:clamp(60px,22%,190px);width:132px;filter:drop-shadow(0 6px 5px rgba(43,34,22,.25))}
+.art-snail-track .trail{position:absolute;bottom:10px;left:0;height:7px;width:clamp(90px,26%,220px);background:rgba(43,34,22,.18)}
+@media(prefers-reduced-motion:no-preference){.art-snail-track img{animation:inch 3.2s steps(3) infinite}}
+@keyframes inch{0%,100%{transform:translateX(0)}50%{transform:translateX(8px)}}
+
+/* error: the park restroom, slightly askew — something's out of order */
+.art-restroom{position:relative;margin-bottom:18px;display:none;width:min(240px,52vw);transform:rotate(-2.5deg);filter:drop-shadow(7px 7px 0 rgba(43,34,22,.2))}
+
+@media(max-width:560px){
+  .art-kite{width:96px;top:6px;right:8px}
+  h1{padding-right:10px}
+}
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <img class="art-kite" id="art-kite" src="assets/v5/kite.webp" width="380" height="866" alt="" aria-hidden="true"/>
+
+    <span class="chip" id="chip">Confirmed</span>
+
+    <div class="art-snail-track" id="art-snail" aria-hidden="true">
+      <span class="trail"></span>
+      <img src="assets/v2/snail.webp" width="1200" height="690" alt=""/>
+    </div>
+    <img class="art-restroom" id="art-restroom" src="assets/v5/restroom.webp" alt="" aria-hidden="true"/>
+
+    <h1 id="title">You're officially <span class="hl">one of us.</span></h1>
+    <p class="lead" id="msg">Thanks for confirming your email. You're on the list. No spam, no party politics. Just parents pushing for parks worth showing up to and homes families can own.</p>
+    <a class="btn" href="/">Back to the site</a>
+  </main>
+
+  <script>
+    (function () {
+      var status = new URLSearchParams(location.search).get('status');
+      var b = document.body.style;
+      var chip = document.getElementById('chip');
+      var title = document.getElementById('title');
+      var msg = document.getElementById('msg');
+      var kite = document.getElementById('art-kite');
+      var snail = document.getElementById('art-snail');
+      var restroom = document.getElementById('art-restroom');
+
+      if (status === 'invalid') {
+        // tedium: the snail says this is going to take another lap
+        b.setProperty('--bg', 'var(--mustard)');
+        b.setProperty('--lead', '#5a4c34');
+        b.color = 'var(--ink)';
+        kite.style.display = 'none';
+        snail.style.display = 'block';
+        chip.textContent = 'Link expired';
+        chip.style.background = 'var(--terra)';
+        chip.style.color = 'var(--paper)';
+        title.innerHTML = 'Ugh. That link <span class="hl" style="--hl:var(--terra);--hl-ink:var(--paper)">expired.</span>';
+        msg.textContent = 'Confirmation links only last 24 hours, and this one crawled past it. Sorry for the extra lap. Head back and enter your email again and we will send a fresh one right away.';
+      } else if (status === 'error') {
+        // broken: the out-of-order park restroom
+        b.setProperty('--bg', 'var(--blue)');
+        b.setProperty('--lead', '#DCE2F5');
+        kite.style.display = 'none';
+        restroom.style.display = 'block';
+        chip.textContent = 'Out of order';
+        chip.style.background = 'var(--terra)';
+        chip.style.color = 'var(--paper)';
+        title.innerHTML = 'Well, that <span class="hl" style="--hl:var(--terra);--hl-ink:var(--paper)">broke.</span>';
+        msg.textContent = 'Something went wrong on our end while confirming your email, and we know exactly how annoying that is. Please try signing up once more, or just email us at hello@raisedinslc.org and we will add you by hand.';
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,2 @@
+# Keep the design sandbox out of production deploys.
+playground/
