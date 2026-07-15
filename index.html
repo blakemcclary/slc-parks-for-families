@@ -253,7 +253,7 @@ nav .btn{padding:10px 20px;font-size:.72rem}
 @media(max-width:600px){
   h2.title{font-size:2rem}.hero-h1{font-size:clamp(2.8rem,13vw,3.6rem);line-height:.97}
   /* mobile: email full row, then zip ~30% + button ~70%, subcopy full row */
-  .hero-join input[type=email]{flex:1 1 100%}.hero-join input.zip{flex:0 0 30%}.hero-join .btn{flex:1 1 auto}.hero-join-fine{flex:1 1 100%}
+  .hero-join input[type=email]{flex:1 1 100%}.hero-join input.zip{flex:0 0 148px;padding-left:12px;padding-right:12px;font-size:.9rem}.hero-join .btn{flex:1 1 auto;align-self:stretch;display:flex;align-items:center;justify-content:center;padding:14px 8px;font-size:.76rem;letter-spacing:.02em;white-space:nowrap}.hero-join-fine{flex:1 1 100%}
   .join-form{gap:16px}.join-input-wrap,.join-input-wrap.zip{flex:1 1 100%;min-width:100%}.join-form .btn{width:100%}
   /* success state: stretch the confirmation banner + IG button full-width to
      match the stacked form fields/CTA above them */
@@ -336,7 +336,7 @@ footer{background:var(--ink)}
 .hero-join input::placeholder{color:#7d6c4a}
 .hero-join .btn{padding:14px 22px}
 /* desktop: [email zip] on row 1, [button subcopy] on row 2 */
-@media(min-width:601px){.hero-join input[type=email]{flex:1 1 200px}.hero-join input.zip{flex:0 0 120px}.hero-join .btn{flex:0 0 auto}.hero-join-fine{flex:1 1 auto}}
+@media(min-width:601px){.hero-join input[type=email]{flex:1 1 200px}.hero-join input.zip{flex:0 0 165px}.hero-join .btn{flex:0 0 auto;border:2.5px solid transparent;padding:15px 22px}.hero-join-fine{flex:1 1 auto}}
 .hero-join-fine{font-size:.8rem;color:var(--brown)}
 .hero-join-fine a{border-bottom:2px solid var(--ink);font-weight:600}
 
@@ -517,7 +517,7 @@ nav.nav-hidden{transform:translateY(-115%)}
       <p class="hero-sub pop in d2">We fight for two things: parks your kids can actually use, and homes they can afford to own. No party politics. Just parents who want SLC to work for their kids.</p>
       <form class="hero-join pop in d3" onsubmit="handleJoin(event)">
         <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address"/>
-        <input type="text" name="zip" class="zip" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" title="5-digit ZIP" placeholder="ZIP" aria-label="ZIP code (optional)"/>
+        <input type="text" name="zip" class="zip" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" title="5-digit ZIP" placeholder="ZIP (optional)" aria-label="ZIP code (optional)"/>
         <!-- honeypot: hidden from humans, catches bots -->
         <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0"/>
         <button type="submit" class="btn">Count me in →</button>
