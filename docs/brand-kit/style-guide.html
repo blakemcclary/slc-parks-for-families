@@ -44,6 +44,7 @@ th{font-weight:700;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase
 td.ok{background:rgba(46,125,79,.14)} td.big{background:rgba(224,169,46,.22)} td.no{background:rgba(196,74,46,.14)}
 td small{display:block;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;opacity:.8}
 .dot{display:inline-block;width:12px;height:12px;margin-right:8px;vertical-align:-1px;border:1px solid var(--rule)}
+.opsz{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin:14px 0 8px}.opsz div{background:var(--paper);border:1px solid var(--rule);padding:18px 16px 12px;text-align:center}.opsz div.yes{background:var(--mustard);border-color:var(--mustard)}.opsz .w{display:block;font-family:'Fraunces',serif;font-weight:900;font-size:4.6rem;line-height:1;letter-spacing:-.025em;color:var(--ink)}.opsz small{display:block;margin-top:8px;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;font-weight:700;color:var(--brown)}
 .type-demo{background:var(--paper);padding:28px;margin:14px 0;border:1px solid var(--rule)}
 .type-demo .disp{font-family:'Fraunces',serif;font-variation-settings:'opsz' 144;font-weight:900;letter-spacing:-.025em;line-height:.97;font-size:3rem;margin:0}
 .type-demo .caps{font-weight:700;letter-spacing:.22em;text-transform:uppercase;font-size:12px;margin:18px 0 0}
@@ -117,6 +118,13 @@ footer{border-top:3px solid var(--ink);padding:24px 0 60px;font-size:.85rem;colo
 <p class="disp">A city your kids can <span class="hl" style="background:linear-gradient(to top,rgba(230,81,155,.34) 0 .24em,transparent .24em)">grow up in.</span></p>
 <p class="caps">Parent-led · Nonpartisan</p>
 <p class="body">We fight for two things: parks your kids can actually use, and homes they can afford to own. No party politics. Just parents who want SLC to work for their kids.</p>
+</div>
+<h3>Optical size is the whole look</h3>
+<p>Fraunces changes design along its <span class="mono">opsz</span> axis. The site uses <strong>opsz 144 + weight 900</strong>, which is where the hairline thins on the S, L, and C come from. The same weight at opsz 9 is a different, sturdier face. Pick the static style <strong>Fraunces 144pt Black</strong> (<span class="mono">Fraunces_144pt-Black.ttf</span> in the Google Fonts zip), or set the variable axes by hand and turn off auto optical sizing.</p>
+<div class="opsz">
+<div><span class="w" style="font-variation-settings:'opsz' 9">SLC</span><small>opsz 9 · "Fraunces 9pt Black" · wrong</small></div>
+<div><span class="w" style="font-variation-settings:'opsz' 72">SLC</span><small>opsz 72 · "Fraunces 72pt Black" · close</small></div>
+<div class="yes"><span class="w" style="font-variation-settings:'opsz' 144">SLC</span><small>opsz 144 · "Fraunces 144pt Black" · this one</small></div>
 </div>
 <h3>Print sizes that match the mockups</h3>
 <div class="tblwrap"><table><thead><tr><th>Product</th><th>Headline (Fraunces 900)</th><th>Caps label (Space Grotesk 700)</th><th>Notes</th></tr></thead><tbody>
