@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="15in" height="16in" viewBox="0 0 1080 1152">
+<!-- Raised in SLC · 15 × 16 in natural canvas tote · 72 units = 1 in -->
+<rect x="0" y="0" width="1080" height="1152" fill="none" stroke="#E6519B"/><text x="540" y="30" text-anchor="middle" font-family="Space Grotesk, Arial" font-size="12" fill="#E6519B">tote body 15 × 16 in (handles above, not shown)</text>
+<rect x="108" y="144" width="864" height="864" fill="none" stroke="#2E7D4F" stroke-dasharray="6 4"/><text x="540" y="134" text-anchor="middle" font-family="Space Grotesk, Arial" font-size="10" fill="#2E7D4F">max print 12 × 12 in · colour-field panel fills this box edge to edge</text>
+</svg>

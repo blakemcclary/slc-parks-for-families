@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="20in" height="14in" viewBox="0 0 1440 1008">
+<!-- Raised in SLC · youth tee print areas · 72 units = 1 in. Left: FRONT. Right: BACK. Sizes are max print areas; center art horizontally. -->
+<g id="FRONT"><rect x="72" y="72" width="648" height="792" fill="none" stroke="#E6519B"/><text x="396" y="60" text-anchor="middle" font-family="Space Grotesk, Arial" font-size="12" fill="#E6519B">FRONT · max print 9 × 11 in (youth) · top of print 2.5 in below collar</text>
+<rect x="180" y="150" width="432" height="504" fill="none" stroke="#2E7D4F" stroke-dasharray="6 4"/><text x="396" y="140" text-anchor="middle" font-family="Space Grotesk, Arial" font-size="10" fill="#2E7D4F">centre chest zone 6 × 7 in (lockups, snail, small quad)</text>
+<rect x="288" y="150" width="216" height="216" fill="none" stroke="#3F57C4" stroke-dasharray="3 3"/><text x="396" y="380" text-anchor="middle" font-family="Space Grotesk, Arial" font-size="9" fill="#3F57C4">tile quad 3 × 3 in</text></g>
+<g id="BACK" transform="translate(720,0)"><rect x="72" y="72" width="648" height="792" fill="none" stroke="#E6519B"/><text x="396" y="60" text-anchor="middle" font-family="Space Grotesk, Arial" font-size="12" fill="#E6519B">BACK · max print 9 × 11 in</text>
+<rect x="144" y="108" width="504" height="216" fill="none" stroke="#2E7D4F" stroke-dasharray="6 4"/><text x="396" y="98" text-anchor="middle" font-family="Space Grotesk, Arial" font-size="10" fill="#2E7D4F">yoke zone 7 × 3 in · 1.5 in below collar (caps, skyline, Pro-kids line)</text></g>
+</svg>

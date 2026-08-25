@@ -1,0 +1,51 @@
+{
+  "Cream": {
+    "Ink": 12.57,
+    "Brown": 10.04,
+    "Paper": 1.05,
+    "Mustard": 1.71,
+    "Olive": 2.92
+  },
+  "Paper": {
+    "Ink": 13.24,
+    "Brown": 10.58,
+    "Paper": 1.0,
+    "Mustard": 1.8,
+    "Olive": 3.07
+  },
+  "Mustard": {
+    "Ink": 7.36,
+    "Brown": 5.88,
+    "Paper": 1.8,
+    "Mustard": 1.0,
+    "Olive": 1.71
+  },
+  "Terra": {
+    "Ink": 3.25,
+    "Brown": 2.6,
+    "Paper": 4.07,
+    "Mustard": 2.26,
+    "Olive": 1.33
+  },
+  "Blue": {
+    "Ink": 2.51,
+    "Brown": 2.01,
+    "Paper": 5.27,
+    "Mustard": 2.93,
+    "Olive": 1.72
+  },
+  "Green": {
+    "Ink": 3.1,
+    "Brown": 2.48,
+    "Paper": 4.27,
+    "Mustard": 2.37,
+    "Olive": 1.39
+  },
+  "Pink": {
+    "Ink": 4.48,
+    "Brown": 3.58,
+    "Paper": 2.96,
+    "Mustard": 1.64,
+    "Olive": 1.04
+  }
+}

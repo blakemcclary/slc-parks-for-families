@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="3.125in" height="2.125in" viewBox="0 0 225.0 153.0">
+<!-- Raised in SLC · donation-sticker-3x2.svg · trim 3x2 in · bleed 0.0625 in · safe 0.1875 in · 72 units = 1 in -->
+<g id="ARTWORK" inkscape:groupmode="layer" inkscape:label="ARTWORK (put art here, extend to bleed)">
+<g id="QR" transform="translate(137.70000000000002,65.7)"><rect width="73.44" height="73.44" fill="#F3ECD6"/><g transform="translate(4.32,4.32) scale(2.2344827586206897)"><path stroke="#2B2216" d="M0 0.5h7m1 0h1m5 0h2m1 0h2m1 0h1m1 0h7M0 1.5h1m5 0h1m5 0h1m1 0h4m1 0h2m1 0h1m5 0h1M0 2.5h1m1 0h3m1 0h1m2 0h1m1 0h3m1 0h1m3 0h1m2 0h1m1 0h3m1 0h1M0 3.5h1m1 0h3m1 0h1m1 0h4m2 0h1m1 0h1m1 0h2m2 0h1m1 0h3m1 0h1M0 4.5h1m1 0h3m1 0h1m2 0h3m3 0h1m1 0h1m1 0h1m2 0h1m1 0h3m1 0h1M0 5.5h1m5 0h1m3 0h1m2 0h1m1 0h1m2 0h3m1 0h1m5 0h1M0 6.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M10 7.5h6m3 0h1M2 8.5h1m1 0h3m1 0h2m3 0h2m1 0h1m3 0h2m3 0h1m2 0h1M2 9.5h2m3 0h2m5 0h2m1 0h1m2 0h3m5 0h1M0 10.5h5m1 0h1m2 0h1m2 0h6m2 0h1m3 0h1m1 0h3M2 11.5h2m3 0h4m10 0h2m1 0h1m2 0h1M2 12.5h1m1 0h1m1 0h3m1 0h2m1 0h1m1 0h1m1 0h2m1 0h1m1 0h2M2 13.5h2m4 0h3m1 0h3m2 0h2m1 0h4m3 0h2M0 14.5h2m1 0h1m2 0h2m1 0h1m1 0h3m1 0h2m3 0h1m1 0h2m2 0h3M1 15.5h2m2 0h1m3 0h1m2 0h6m4 0h2M0 16.5h1m2 0h1m2 0h1m2 0h4m9 0h1m2 0h1m1 0h2M1 17.5h2m7 0h1m1 0h1m1 0h1m2 0h2m1 0h3m2 0h4M0 18.5h1m1 0h1m2 0h2m1 0h1m1 0h4m1 0h2m4 0h1m1 0h1m1 0h4M1 19.5h1m1 0h1m3 0h1m2 0h3m4 0h2m1 0h1m1 0h2m4 0h1M0 20.5h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h1m1 0h2m1 0h7m2 0h2M8 21.5h2m3 0h1m1 0h1m1 0h1m2 0h1m3 0h1m2 0h2M0 22.5h7m3 0h2m1 0h1m2 0h5m1 0h1m1 0h1m1 0h3M0 23.5h1m5 0h1m1 0h1m2 0h1m1 0h4m3 0h1m3 0h1m3 0h1M0 24.5h1m1 0h3m1 0h1m1 0h3m1 0h1m1 0h5m1 0h6m2 0h1M0 25.5h1m1 0h3m1 0h1m3 0h1m2 0h1m2 0h1m1 0h1m1 0h2m2 0h1m1 0h1M0 26.5h1m1 0h3m1 0h1m1 0h1m3 0h3m2 0h1m1 0h1m3 0h2m3 0h1M0 27.5h1m5 0h1m2 0h1m2 0h4m1 0h1m1 0h2m1 0h2m3 0h1M0 28.5h7m2 0h3m2 0h1m1 0h5m3 0h2m1 0h2"/></g></g>
+</g>
+<g id="GUIDES" inkscape:groupmode="layer" inkscape:label="GUIDES (delete before export)">
+<rect x="0" y="0" width="225.0" height="153.0" rx="13.14" fill="none" stroke="#C44A2E" stroke-width="1"/>
+<rect x="4.5" y="4.5" width="216" height="144" rx="8.64" fill="none" stroke="#E6519B" stroke-width="1"/>
+<rect x="18.0" y="18.0" width="189.0" height="117.0" rx="0" fill="none" stroke="#2E7D4F" stroke-width=".75" stroke-dasharray="4 3"/>
+<text x="24.0" y="32.0" font-family="Space Grotesk, Arial, sans-serif" font-size="9" fill="#2E7D4F">safe area · QR 0.9 in (min 0.8) · optional</text>
+<text x="10.5" y="142.5" font-family="Space Grotesk, Arial, sans-serif" font-size="9" fill="#E6519B">trim 3 × 2 in</text>
+<text x="6" y="147.0" font-family="Space Grotesk, Arial, sans-serif" font-size="9" fill="#C44A2E">bleed 0.0625 in</text>
+</g>
+</svg>

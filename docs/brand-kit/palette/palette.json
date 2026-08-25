@@ -1,0 +1,242 @@
+[
+  {
+    "name": "Cream",
+    "hex": "#EFE6CE",
+    "rgb": [
+      239,
+      230,
+      206
+    ],
+    "cmyk": [
+      0,
+      4,
+      14,
+      6
+    ],
+    "role": "Base ground. Signs, stickers, tees, totes."
+  },
+  {
+    "name": "Paper",
+    "hex": "#F3ECD6",
+    "rgb": [
+      243,
+      236,
+      214
+    ],
+    "cmyk": [
+      0,
+      3,
+      12,
+      5
+    ],
+    "role": "QR boxes, cream type on dark fields, chips."
+  },
+  {
+    "name": "Cream 2",
+    "hex": "#E7D9B8",
+    "rgb": [
+      231,
+      217,
+      184
+    ],
+    "cmyk": [
+      0,
+      6,
+      20,
+      9
+    ],
+    "role": "Secondary cream plane / road band."
+  },
+  {
+    "name": "Mustard",
+    "hex": "#E0A92E",
+    "rgb": [
+      224,
+      169,
+      46
+    ],
+    "cmyk": [
+      0,
+      25,
+      79,
+      12
+    ],
+    "role": "Primary field. Hero, chips, highlight word on dark fields."
+  },
+  {
+    "name": "Terra",
+    "hex": "#C44A2E",
+    "rgb": [
+      196,
+      74,
+      46
+    ],
+    "cmyk": [
+      0,
+      62,
+      77,
+      23
+    ],
+    "role": "Primary action colour. Buttons, Pro-kids block, bands."
+  },
+  {
+    "name": "Orange",
+    "hex": "#E0683A",
+    "rgb": [
+      224,
+      104,
+      58
+    ],
+    "cmyk": [
+      0,
+      54,
+      74,
+      12
+    ],
+    "role": "Accent plane. Use sparingly next to mustard."
+  },
+  {
+    "name": "Blue",
+    "hex": "#3F57C4",
+    "rgb": [
+      63,
+      87,
+      196
+    ],
+    "cmyk": [
+      68,
+      56,
+      0,
+      23
+    ],
+    "role": "Pond / housing field. Ducks live here."
+  },
+  {
+    "name": "Blue 2",
+    "hex": "#5E77D6",
+    "rgb": [
+      94,
+      119,
+      214
+    ],
+    "cmyk": [
+      56,
+      44,
+      0,
+      16
+    ],
+    "role": "Lighter pond plane on top of Blue."
+  },
+  {
+    "name": "Green",
+    "hex": "#2E7D4F",
+    "rgb": [
+      46,
+      125,
+      79
+    ],
+    "cmyk": [
+      63,
+      0,
+      37,
+      51
+    ],
+    "role": "Parks field. Snail, tote, Pro-kids sign."
+  },
+  {
+    "name": "Green Deep",
+    "hex": "#1F5E3A",
+    "rgb": [
+      31,
+      94,
+      58
+    ],
+    "cmyk": [
+      67,
+      0,
+      38,
+      63
+    ],
+    "role": "Askew plane on top of Green."
+  },
+  {
+    "name": "Pink",
+    "hex": "#E6519B",
+    "rgb": [
+      230,
+      81,
+      155
+    ],
+    "cmyk": [
+      0,
+      65,
+      33,
+      10
+    ],
+    "role": "Corner plane, highlight underline (at 32-40%)."
+  },
+  {
+    "name": "Pink Soft",
+    "hex": "#E89CC4",
+    "rgb": [
+      232,
+      156,
+      196
+    ],
+    "cmyk": [
+      0,
+      33,
+      16,
+      9
+    ],
+    "role": "Tint only; never as a type colour."
+  },
+  {
+    "name": "Olive",
+    "hex": "#8C8A2E",
+    "rgb": [
+      140,
+      138,
+      46
+    ],
+    "cmyk": [
+      0,
+      1,
+      67,
+      45
+    ],
+    "role": "Stock logo colour. Do not place on mustard."
+  },
+  {
+    "name": "Brown",
+    "hex": "#43301F",
+    "rgb": [
+      67,
+      48,
+      31
+    ],
+    "cmyk": [
+      0,
+      28,
+      54,
+      74
+    ],
+    "role": "Secondary text on cream / mustard."
+  },
+  {
+    "name": "Ink",
+    "hex": "#2B2216",
+    "rgb": [
+      43,
+      34,
+      22
+    ],
+    "cmyk": [
+      0,
+      21,
+      49,
+      83
+    ],
+    "role": "Primary text. QR modules. Inked logo."
+  }
+]

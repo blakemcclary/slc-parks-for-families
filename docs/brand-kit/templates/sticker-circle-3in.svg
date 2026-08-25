@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="3.125in" height="3.125in" viewBox="0 0 225.0 225.0">
+<!-- Raised in SLC · sticker-circle-3in.svg · trim 3x3 in · bleed 0.0625 in · safe 0.1875 in · 72 units = 1 in -->
+<g id="ARTWORK" inkscape:groupmode="layer" inkscape:label="ARTWORK (put art here, extend to bleed)">
+
+</g>
+<g id="GUIDES" inkscape:groupmode="layer" inkscape:label="GUIDES (delete before export)">
+<circle cx="112.5" cy="112.5" r="112.5" fill="none" stroke="#C44A2E" stroke-width="1"/>
+<circle cx="112.5" cy="112.5" r="108" fill="none" stroke="#E6519B" stroke-width="1"/>
+<circle cx="112.5" cy="112.5" r="94.5" fill="none" stroke="#2E7D4F" stroke-width=".75" stroke-dasharray="4 3"/>
+<text x="24.0" y="32.0" font-family="Space Grotesk, Arial, sans-serif" font-size="9" fill="#2E7D4F">safe area · Fraunces 900 ~28 pt · no QR</text>
+<text x="10.5" y="214.5" font-family="Space Grotesk, Arial, sans-serif" font-size="9" fill="#E6519B">trim 3 × 3 in</text>
+<text x="6" y="219.0" font-family="Space Grotesk, Arial, sans-serif" font-size="9" fill="#C44A2E">bleed 0.0625 in</text>
+</g>
+</svg>
