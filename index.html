@@ -488,18 +488,58 @@ nav.nav-hidden{transform:translateY(-115%)}
   nav .logo{height:auto;max-height:32px;max-width:calc(100% - 116px)}
   nav .btn{flex-shrink:0;white-space:nowrap;padding:10px 16px}
 }
+/* ───────── Donate: hosted Stripe Payment Link ───────── */
+/* the link is the whole integration — plain anchors, no scripts, no keys */
+.btn.donate{--btn:var(--mustard);color:var(--ink)}
+.btn.donate:hover{--btn:#EEB93C}
+/* visible focus ring on every donate affordance (and the nav generally) */
+nav a:focus-visible,nav button:focus-visible,#give a:focus-visible,.footer-content a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+#give a:focus-visible,.footer-content a:focus-visible{outline-color:var(--paper)}
+
+/* nav: hamburger + bar-level donate button, both mobile-only */
+.nav-donate-bar{display:none}
+.nav-toggle{display:none;flex-direction:column;align-items:center;justify-content:center;gap:5px;width:44px;height:44px;flex-shrink:0;background:transparent;border:2.5px solid var(--ink);color:var(--ink);cursor:pointer}
+.nav-toggle span{display:block;width:20px;height:2.5px;background:currentColor}
+/* the full link row stops fitting well before 760px once Donate joins it, so the
+   collapsed menu takes over at 1000px */
+@media(max-width:1000px){
+  nav{gap:10px}
+  nav .logo{max-width:calc(100% - 178px)}
+  nav .btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+  .nav-donate-bar{display:inline-flex;margin-left:auto;padding:10px 14px}
+  .nav-toggle{display:flex}
+  /* collapsed menu: the nav links drop down as a panel under the bar */
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;margin:0;padding:6px clamp(14px,4vw,20px) 18px;background:var(--cream);box-shadow:0 3px 0 rgba(43,34,22,.12)}
+  nav.menu-open .nav-links{display:flex}
+  .nav-links a:not(.btn){display:flex;align-items:center;min-height:44px;padding:4px 2px;border-bottom:2px solid rgba(43,34,22,.12)}
+  .nav-links a:not(.btn):hover{border-color:var(--orange)}
+  .nav-links .btn{width:100%;margin-top:12px}
+}
+
+/* ── GIVE section ── */
+#give{--bg:var(--terra);text-align:center}
+#give .chip{--chip:var(--paper);color:var(--terra)}
+#give .title{color:var(--paper)}
+#give .title .hl{--hl:var(--mustard);color:var(--ink)}
+.give-body{max-width:640px;margin:0 auto;color:#F7E8DE;font-size:1.06rem}
+.give-btn{margin-top:34px;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+.give-fine{margin-top:18px;font-size:.85rem;color:#F4D9CD}
+@media(max-width:600px){.give-btn{width:100%;max-width:340px}}
 </style>
 </head>
 <body>
 
 <nav>
   <img class="logo" src="assets/v3/logo.webp" width="1400" height="183" alt="Raised in SLC"/>
-  <div class="nav-links">
+  <a class="btn donate nav-donate-bar" href="https://buy.stripe.com/28E8wO2Z54BE06G3ngc7u00">Donate</a>
+  <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu"><span></span><span></span><span></span></button>
+  <div class="nav-links" id="nav-menu">
     <a href="#problem">Why</a>
     <a href="#parks">Parks</a>
     <a href="#housing">Homes</a>
     <a href="#approach">Approach</a>
     <a href="https://www.instagram.com/raisedinslc/" target="_blank" rel="noopener" class="ig-link" aria-label="Follow Raised in SLC on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.43-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s0-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.21 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.5.01-4.74.07-.9.04-1.38.19-1.7.32-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.13.32-.28.8-.32 1.7C3.21 8.5 3.2 8.85 3.2 12s.01 3.5.07 4.74c.04.9.19 1.38.32 1.7.17.43.37.74.69 1.06.32.32.63.52 1.06.69.32.13.8.28 1.7.32 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c.9-.04 1.38-.19 1.7-.32.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.13-.32.28-.8.32-1.7.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.04-.9-.19-1.38-.32-1.7a2.86 2.86 0 0 0-.69-1.06 2.86 2.86 0 0 0-1.06-.69c-.32-.13-.8-.28-1.7-.32C15.5 4.01 15.15 4 12 4zm0 3.06A4.94 4.94 0 1 1 12 16.94 4.94 4.94 0 0 1 12 7.06zm0 1.8a3.14 3.14 0 1 0 0 6.28 3.14 3.14 0 0 0 0-6.28zM17.64 6.4a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3z"/></svg><span>Instagram</span></a>
+    <a href="https://buy.stripe.com/28E8wO2Z54BE06G3ngc7u00" class="btn donate">Donate</a>
     <a href="#join" class="btn">Join us</a>
   </div>
 </nav>
@@ -638,6 +678,17 @@ nav.nav-hidden{transform:translateY(-115%)}
   </div>
 </section>
 
+<!-- GIVE — hosted Stripe Payment Link, no scripts or keys involved -->
+<section id="give" class="section field">
+  <div class="inner">
+    <span class="chip pop">Chip in</span>
+    <h2 class="title pop">Parents power this. <span class="hl">Money keeps it going.</span></h2>
+    <p class="give-body pop d1">Raised in SLC runs on volunteer hours and small gifts from families like yours. Your donation covers the unglamorous part: printing, permits, meeting space, and the research behind every case we make at city hall.</p>
+    <a class="btn donate give-btn pop d2" href="https://buy.stripe.com/28E8wO2Z54BE06G3ngc7u00">Donate →</a>
+    <p class="give-fine pop d3">Secure checkout through Stripe. Any amount helps.</p>
+  </div>
+</section>
+
 <!-- JOIN -->
 <section id="join" class="section field">
   <span class="plane a askew" aria-hidden="true"></span>
@@ -668,6 +719,7 @@ nav.nav-hidden{transform:translateY(-115%)}
     <div class="footer-left">
       <img class="logo" src="assets/v3/logo.webp" width="1400" height="183" alt="Raised in SLC" loading="lazy"/>
       <div><a href="mailto:hello@raisedinslc.org">hello@raisedinslc.org</a></div>
+      <div><a href="https://buy.stripe.com/28E8wO2Z54BE06G3ngc7u00">Donate</a></div>
       <div><a href="https://www.instagram.com/raisedinslc/" target="_blank" rel="noopener" class="ig-link footer-ig" aria-label="Follow Raised in SLC on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.43-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s0-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.21 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.5.01-4.74.07-.9.04-1.38.19-1.7.32-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.13.32-.28.8-.32 1.7C3.21 8.5 3.2 8.85 3.2 12s.01 3.5.07 4.74c.04.9.19 1.38.32 1.7.17.43.37.74.69 1.06.32.32.63.52 1.06.69.32.13.8.28 1.7.32 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c.9-.04 1.38-.19 1.7-.32.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.13-.32.28-.8.32-1.7.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.04-.9-.19-1.38-.32-1.7a2.86 2.86 0 0 0-.69-1.06 2.86 2.86 0 0 0-1.06-.69c-.32-.13-.8-.28-1.7-.32C15.5 4.01 15.15 4 12 4zm0 3.06A4.94 4.94 0 1 1 12 16.94 4.94 4.94 0 0 1 12 7.06zm0 1.8a3.14 3.14 0 1 0 0 6.28 3.14 3.14 0 0 0 0-6.28zM17.64 6.4a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3z"/></svg><span>@raisedinslc</span></a></div>
     </div>
     <p class="footer-fine">© 2026 Raised in SLC. A nonpartisan, parent-led nonprofit. Not affiliated with Salt Lake City government or any political party.</p>
@@ -681,7 +733,17 @@ document.querySelectorAll('.pop:not(.in)').forEach(el=>obs.observe(el));
 
 // header: hide on scroll-down, reveal on scroll-up
 const navEl=document.querySelector('nav');let lastY=scrollY,ticking=false;
-addEventListener('scroll',()=>{if(ticking)return;ticking=true;requestAnimationFrame(()=>{const y=scrollY;if(y>lastY&&y>120)navEl.classList.add('nav-hidden');else navEl.classList.remove('nav-hidden');lastY=y;ticking=false;});},{passive:true});
+addEventListener('scroll',()=>{if(ticking)return;ticking=true;requestAnimationFrame(()=>{const y=scrollY;if(y>lastY&&y>120&&!navEl.classList.contains('menu-open'))navEl.classList.add('nav-hidden');else navEl.classList.remove('nav-hidden');lastY=y;ticking=false;});},{passive:true});
+
+// mobile: collapsed menu (holds the section links, Donate and Join us)
+const navToggle=document.getElementById('navToggle'),navMenu=document.getElementById('nav-menu');
+if(navToggle&&navMenu){
+  const setMenu=open=>{navEl.classList.toggle('menu-open',open);navToggle.setAttribute('aria-expanded',String(open));navToggle.setAttribute('aria-label',open?'Close menu':'Open menu');};
+  navToggle.addEventListener('click',()=>setMenu(!navEl.classList.contains('menu-open')));
+  navMenu.addEventListener('click',e=>{if(e.target.closest('a'))setMenu(false);});
+  addEventListener('keydown',e=>{if(e.key==='Escape'&&navEl.classList.contains('menu-open')){setMenu(false);navToggle.focus();}});
+  matchMedia('(min-width:1001px)').addEventListener('change',e=>{if(e.matches)setMenu(false);});
+}
 
 // bus: drive in promptly when its road scrolls into view (restart so it never starts mid-cycle / just-missed)
 const busRoad=document.querySelector('.bus-road'),bus=document.getElementById('bus');
