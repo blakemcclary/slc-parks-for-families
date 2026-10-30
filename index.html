@@ -280,6 +280,8 @@ footer{background:var(--ink)}
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation:none !important;transition:none !important}
   .pop{opacity:1;transform:none}
+  /* success banner + share buttons start at scale(0) and rely on an animation to appear */
+  .join-welcome,.share-btn{transform:none}
 }
 
 /* ── Iteration: calmer, cleaner pass ── */
@@ -828,7 +830,12 @@ async function handleJoin(e){
     const row=document.createElement('div');row.className='share-row';row.innerHTML='<div class="share-lead">Already following? Spread the word:</div>';
     shares.forEach((s,i)=>{const el=document.createElement(s.copy?'button':'a');el.className='share-btn';el.style.setProperty('--sh',s.color);if(s.dark)el.style.color='#2B2216';el.innerHTML=s.icon+s.label;if(s.copy){el.addEventListener('click',async()=>{await navigator.clipboard.writeText(MSG+' '+SITE);el.lastChild.textContent='Copied!';paperConfetti(10,el.getBoundingClientRect());setTimeout(()=>el.lastChild.textContent='Copy link',1800);});}else{el.href=s.href;el.target='_blank';el.rel='noopener';}row.appendChild(el);setTimeout(()=>el.classList.add('show'),700+i*160);});
     igBtn.insertAdjacentElement('afterend',row);
-  }catch{btn.textContent='Count me in';btn.disabled=false;}
+  }catch{
+    btn.textContent='Try again';btn.disabled=false;
+    let err=form.nextElementSibling;
+    if(!err||!err.classList.contains('join-error')){err=document.createElement('div');err.className='join-error';err.setAttribute('role','alert');err.style.cssText='margin-top:16px;font-weight:600;color:var(--terra)';form.insertAdjacentElement('afterend',err);}
+    err.textContent="Hmm, that didn't go through. Check the address and try again.";
+  }
 }
 </script>
 </body>
