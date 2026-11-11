@@ -38,29 +38,43 @@ python3 -m http.server
 
 ## Deploying
 
-Hosted on **Vercel** (project `slc-parks-for-families`). The static `index.html`
-is served as-is and the `api/` folder runs as serverless functions. Pushes to
-`main` deploy automatically once the GitHub repo is connected to the Vercel
-project and DNS for `raisedinslc.org` points at Vercel.
+Two hosts, no DNS changes:
+
+- **Static site → GitHub Pages.** `index.html`, `confirmed.html` and `assets/`
+  are served from `main` at `raisedinslc.org` (see `CNAME`).
+- **Signup API → Vercel** (project `slc-parks-for-families`). Only the `api/`
+  functions are used there. The forms call it cross-origin at the address in
+  `SIGNUP_API` near the bottom of `index.html`; the functions only accept browser
+  calls from `raisedinslc.org` (add more with `ALLOWED_ORIGINS`). Pushes to
+  `main` redeploy it once the repo is connected to the Vercel project.
+
+If the Vercel production address changes, update `SIGNUP_API` in `index.html`
+and `API_BASE_URL` in Vercel.
 
 ## Waitlist signup (Resend, double opt-in)
 
-Email signup uses a two-step confirmation to keep spam out of the list:
+1. Visitor submits a form → `POST /api/subscribe` checks the honeypot, a
+   minimum time on page, a per-IP burst limit and the email/ZIP, then emails a
+   confirmation link. The pending signup lives only in that signed link
+   (HMAC, expires in 24 hours). Nothing is added to the list yet. An address
+   that is already active gets no email and is told it is already on the list.
+2. Visitor clicks the link → `GET /api/confirm` verifies it and only then
+   creates or reactivates the contact in the **Resend Audience**, then redirects
+   to `confirmed.html`, which shows an unsubscribe link. Clicking twice is safe.
+3. `GET /api/unsubscribe` shows an "Unsubscribe?" button; the `POST` marks the
+   contact unsubscribed. People who unsubscribed must confirm again to rejoin.
 
-1. Visitor submits the form → `POST /api/subscribe` validates the address and
-   emails a confirmation link (a stateless HMAC token — no database needed).
-2. Visitor clicks the link → `GET /api/confirm` verifies the token and adds the
-   address to a **Resend Audience** (the confirmed waitlist), then redirects to
-   `confirmed.html`.
+The Resend Audience is the subscriber list: no contact = never confirmed,
+`unsubscribed: false` = active, `unsubscribed: true` = opted out. Broadcasts
+sent from Resend use Resend's own unsubscribe link, which updates the same
+contact. Mirroring rows into a Google Sheet is optional (`GOOGLE_SHEET_WEBHOOK_URL`).
 
-A hidden honeypot field (`company`) on each form catches basic bots.
+Limits of storing state in Resend only: the per-IP limit is per server
+instance, not global, and someone can re-request confirmation emails for an
+address that hasn't confirmed yet (each is rate-limited per IP).
 
-Required environment variables (see `.env.example`): `RESEND_API_KEY`,
-`RESEND_AUDIENCE_ID`, `SIGNING_SECRET`, `RESEND_FROM`.
-
-> Sending to real signups requires a **verified sending domain** in Resend
-> (DKIM/SPF DNS records at the domain's DNS provider). Until then Resend's
-> `onboarding@resend.dev` only delivers to the account owner's own address.
+Required Vercel environment variables (see `.env.example`): `RESEND_API_KEY`,
+`RESEND_AUDIENCE_ID`, `SIGNING_SECRET`, `RESEND_FROM`, `API_BASE_URL`.
 
 ## Donations
 
