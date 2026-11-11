@@ -1,84 +1,102 @@
-// POST /api/subscribe  { email }
-// Validates the address, then emails a double opt-in confirmation link.
-// Nothing is stored here — the address only lands in the list after it's confirmed.
+// POST /api/subscribe  { email, zip?, company (honeypot), t (ms on page) }
+// Validates input, then emails a double opt-in confirmation link through Resend.
+// Nothing is activated here: the address only joins the list once the signed,
+// expiring link in that email is clicked (see confirm.js).
 import {
-  TOKEN_TTL_MS,
   normalizeEmail,
-  normalizeZip,
+  parseZip,
   isValidEmail,
-  signToken,
+  confirmUrl,
+  apiBaseUrl,
+  applyCors,
+  rateLimited,
+  clientIp,
+  getContactStatus,
+  sendEmail,
+  maskEmail,
   logToSheet,
   requireEnv,
 } from './_lib.js';
 
 export default async function handler(req, res) {
+  if (!applyCors(req, res)) {
+    return res.status(403).json({ ok: false, error: 'forbidden_origin' });
+  }
+  if (req.method === 'OPTIONS') return res.status(204).end();
   if (req.method !== 'POST') {
-    res.setHeader('Allow', 'POST');
+    res.setHeader('Allow', 'POST, OPTIONS');
     return res.status(405).json({ ok: false, error: 'method_not_allowed' });
   }
 
   const body = typeof req.body === 'string' ? safeParse(req.body) : req.body || {};
 
-  // Honeypot: real users leave this hidden field blank; bots tend to fill it.
-  if (body.company) return res.status(200).json({ ok: true });
+  // Bot traps: real users leave the hidden field blank and take more than a
+  // moment to fill the form. Pretend success so bots learn nothing.
+  if (body.company) return res.status(200).json({ ok: true, status: 'pending' });
+  if (body.t !== undefined && Number(body.t) < 800) {
+    return res.status(200).json({ ok: true, status: 'pending' });
+  }
+
+  if (rateLimited(clientIp(req))) {
+    return res.status(429).json({ ok: false, error: 'rate_limited' });
+  }
 
   const email = normalizeEmail(body.email);
   if (!isValidEmail(email)) {
     return res.status(400).json({ ok: false, error: 'invalid_email' });
   }
-  const zip = normalizeZip(body.zip);
+  const zip = parseZip(body.zip);
+  if (zip === null) {
+    return res.status(400).json({ ok: false, error: 'invalid_zip' });
+  }
 
-  const secret = requireEnv('SIGNING_SECRET');
-  const apiKey = requireEnv('RESEND_API_KEY');
-  const siteUrl = (process.env.SITE_URL || `https://${req.headers.host}`).replace(/\/$/, '');
-  const from = process.env.RESEND_FROM || 'Raised in SLC <onboarding@resend.dev>';
+  let secret, from;
+  try {
+    secret = requireEnv('SIGNING_SECRET');
+    requireEnv('RESEND_API_KEY');
+    requireEnv('RESEND_AUDIENCE_ID');
+    from = requireEnv('RESEND_FROM');
+  } catch (err) {
+    console.error(err.message);
+    return res.status(500).json({ ok: false, error: 'server_misconfigured' });
+  }
 
-  // Capture the lead immediately as unverified, so we keep people who sign up
-  // but never click the confirmation link. Non-fatal — don't block the email.
+  // Already confirmed and active: don't send another email.
+  try {
+    if ((await getContactStatus(email)) === 'active') {
+      return res.status(200).json({ ok: true, status: 'already_subscribed' });
+    }
+  } catch (err) {
+    console.error('Contact lookup failed', err.message);
+    return res.status(502).json({ ok: false, error: 'upstream_error' });
+  }
+
+  // Optional unverified mirror in the Google Sheet. Non-fatal.
   try {
     await logToSheet(email, zip, false);
   } catch (err) {
-    console.error('Sheet append (unverified) failed', err);
+    console.error('Sheet append (unverified) failed', err.message);
   }
 
-  const expiry = Date.now() + TOKEN_TTL_MS;
-  const sig = signToken(email, zip, String(expiry), secret);
-  const confirmUrl =
-    `${siteUrl}/api/confirm?e=${encodeURIComponent(email)}` +
-    `&z=${encodeURIComponent(zip)}&x=${expiry}&s=${encodeURIComponent(sig)}`;
-
+  const link = confirmUrl(apiBaseUrl(req), email, zip, secret);
   try {
-    const r = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        from,
-        to: email,
-        subject: 'Confirm your spot with Raised in SLC',
-        // Email images must be publicly reachable — always the production
-        // domain, never the (SSO-protected) preview host.
-        html: confirmationEmail(confirmUrl, process.env.PUBLIC_ASSET_URL || 'https://raisedinslc.org'),
-        text:
-          `Thanks for joining Raised in SLC!\n\n` +
-          `Please confirm your email to finish signing up:\n${confirmUrl}\n\n` +
-          `This link expires in 24 hours. If you didn't request this, you can ignore it.`,
-      }),
+    await sendEmail({
+      from,
+      to: email,
+      subject: 'Confirm your spot with Raised in SLC',
+      // Email images must be publicly reachable: always the production domain.
+      html: confirmationEmail(link, process.env.PUBLIC_ASSET_URL || 'https://raisedinslc.org'),
+      text:
+        `Thanks for joining Raised in SLC!\n\n` +
+        `Please confirm your email to finish signing up:\n${link}\n\n` +
+        `This link expires in 24 hours. If you didn't request this, you can ignore it.`,
     });
-
-    if (!r.ok) {
-      const detail = await r.text();
-      console.error('Resend send failed', r.status, detail);
-      return res.status(502).json({ ok: false, error: 'send_failed' });
-    }
   } catch (err) {
-    console.error('Resend request error', err);
+    console.error('Confirmation send failed for', maskEmail(email), err.message);
     return res.status(502).json({ ok: false, error: 'send_failed' });
   }
 
-  return res.status(200).json({ ok: true });
+  return res.status(200).json({ ok: true, status: 'pending' });
 }
 
 function safeParse(s) {

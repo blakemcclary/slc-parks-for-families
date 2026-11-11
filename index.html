@@ -802,18 +802,37 @@ const confColors=['#3F57C4','#C44A2E','#E0683A','#E0A92E','#2E7D4F','#E6519B'];
 function paperConfetti(n,o){if(REDUCED)return;for(let i=0;i<n;i++){const c=document.createElement('div');c.className='confetti';const f=!!o;const x=f?o.left+Math.random()*o.width:Math.random()*innerWidth;const y=f?o.top:-20;c.style.cssText=`left:${x}px;top:${y}px;background:${confColors[i%6]}`;document.body.appendChild(c);const drift=(Math.random()-.5)*(f?360:60);const rise=f?-(120+Math.random()*160):0;const fall=f?innerHeight-y+40:innerHeight+60;const rot=`${Math.random()>.5?'':'-'}${360+Math.random()*360}deg`;c.animate([{transform:'translate(0,0) rotate(0)'},{transform:`translate(${drift*.5}px,${rise}px) rotate(${rot})`,offset:f?.3:.01},{transform:`translate(${drift}px,${fall}px) rotate(${rot})`}],{duration:1800+Math.random()*1600,easing:'steps(24)'}).onfinish=()=>c.remove();}}
 let buf='';addEventListener('keydown',e=>{buf=(buf+e.key).slice(-3).toLowerCase();if(buf==='slc')paperConfetti(40);});
 
+// The site is static (GitHub Pages); the signup API runs on Vercel.
+const SIGNUP_API=/\.vercel\.app$|^localhost$/.test(location.hostname)?'':'https://slc-parks-for-families.vercel.app';
+const PAGE_LOADED=Date.now();
+const JOIN_ERRORS={
+  invalid_email:"That email address doesn't look right. Check it and try again.",
+  invalid_zip:'ZIP should be 5 digits, or leave it blank.',
+  rate_limited:'Too many tries from here. Wait a few minutes and try again.',
+  send_failed:"We couldn't send your confirmation email. Please try again in a bit.",
+};
+function showJoinError(form,text){
+  let err=form.nextElementSibling;
+  if(!err||!err.classList.contains('join-error')){err=document.createElement('div');err.className='join-error';err.setAttribute('role','alert');err.style.cssText='margin-top:16px;font-weight:600;color:var(--terra)';form.insertAdjacentElement('afterend',err);}
+  err.textContent=text;
+}
 async function handleJoin(e){
   e.preventDefault();
   const form=e.target,input=form.querySelector('input[type=email]'),zip=form.querySelector('input[name=zip]'),hp=form.querySelector('input[name=company]'),btn=form.querySelector('button');
+  const label=btn.dataset.label||(btn.dataset.label=btn.textContent);
   btn.style.minWidth=btn.offsetWidth+'px';btn.textContent='Sending…';btn.disabled=true;
+  let data={};
   try{
-    const res=await fetch('/api/subscribe',{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify({email:input.value,zip:zip&&zip.value||undefined,company:hp&&hp.value||undefined})});
-    if(!res.ok)throw 0;
-    btn.textContent="Sent!";btn.classList.add('joined');
-    input.value='';input.placeholder='Check your email to confirm';input.disabled=true;
+    const res=await fetch(SIGNUP_API+'/api/subscribe',{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify({email:input.value,zip:zip&&zip.value||undefined,company:hp&&hp.value||undefined,t:Date.now()-PAGE_LOADED})});
+    data=await res.json().catch(()=>({}));
+    if(!res.ok||!data.ok)throw 0;
+    const err=form.nextElementSibling;if(err&&err.classList.contains('join-error'))err.remove();
+    const already=data.status==='already_subscribed';
+    btn.textContent=already?"You're in!":'Sent!';btn.classList.add('joined');
+    input.value='';input.placeholder=already?"You're already on the list":'Check your email to confirm';input.disabled=true;
     if(zip){zip.disabled=true;const zw=zip.closest('.join-input-wrap')||zip;zw.style.display='none';}
     paperConfetti(34,form.getBoundingClientRect());
-    const welcome=document.createElement('div');welcome.className='join-welcome';welcome.textContent='Almost there. Confirm the email we just sent.';form.insertAdjacentElement('afterend',welcome);
+    const welcome=document.createElement('div');welcome.className='join-welcome';welcome.textContent=already?"Good news: you're already on the list.":'Almost there. Confirm the email we just sent.';form.insertAdjacentElement('afterend',welcome);
     const IG='https://instagram.com/raisedinslc';
     const igBtn=document.createElement('a');igBtn.className='ig-follow share-btn';igBtn.href=IG;igBtn.target='_blank';igBtn.rel='noopener';igBtn.style.setProperty('--sh','#E6519B');
     igBtn.innerHTML='<svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23a3.7 3.7 0 0 1-.9 1.38 3.7 3.7 0 0 1-1.38.9c-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.43-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zM12 7.4a4.6 4.6 0 1 0 0 9.2 4.6 4.6 0 0 0 0-9.2zm0 7.59a2.99 2.99 0 1 1 0-5.98 2.99 2.99 0 0 1 0 5.98zm5.85-7.79a1.08 1.08 0 1 1-2.15 0 1.08 1.08 0 0 1 2.15 0z"/></svg>Follow us on Instagram';
@@ -831,10 +850,8 @@ async function handleJoin(e){
     shares.forEach((s,i)=>{const el=document.createElement(s.copy?'button':'a');el.className='share-btn';el.style.setProperty('--sh',s.color);if(s.dark)el.style.color='#2B2216';el.innerHTML=s.icon+s.label;if(s.copy){el.addEventListener('click',async()=>{await navigator.clipboard.writeText(MSG+' '+SITE);el.lastChild.textContent='Copied!';paperConfetti(10,el.getBoundingClientRect());setTimeout(()=>el.lastChild.textContent='Copy link',1800);});}else{el.href=s.href;el.target='_blank';el.rel='noopener';}row.appendChild(el);setTimeout(()=>el.classList.add('show'),700+i*160);});
     igBtn.insertAdjacentElement('afterend',row);
   }catch{
-    btn.textContent='Try again';btn.disabled=false;
-    let err=form.nextElementSibling;
-    if(!err||!err.classList.contains('join-error')){err=document.createElement('div');err.className='join-error';err.setAttribute('role','alert');err.style.cssText='margin-top:16px;font-weight:600;color:var(--terra)';form.insertAdjacentElement('afterend',err);}
-    err.textContent="Hmm, that didn't go through. Check the address and try again.";
+    btn.textContent=label;btn.disabled=false;
+    showJoinError(form,JOIN_ERRORS[data.error]||"Something went wrong on our end. Please try again in a bit, or email hello@raisedinslc.org.");
   }
 }
 </script>

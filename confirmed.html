@@ -103,11 +103,14 @@ img{display:block;max-width:100%;height:auto;width:auto}
     <h1 id="title">You're officially <span class="hl">one of us.</span></h1>
     <p class="lead" id="msg">Thanks for confirming your email. You're on the list. No spam, no party politics. Just parents pushing for parks worth showing up to and homes families can own.</p>
     <a class="btn" href="/">Back to the site</a>
+    <p class="lead" id="unsub" style="display:none;font-size:.85rem;margin-top:28px">Changed your mind? <a id="unsub-link" href="#" style="color:inherit">Unsubscribe</a>.</p>
   </main>
 
   <script>
     (function () {
-      var status = new URLSearchParams(location.search).get('status');
+      var params = new URLSearchParams(location.search);
+      var status = params.get('status');
+      var unsub = params.get('unsub') || '';
       var b = document.body.style;
       var chip = document.getElementById('chip');
       var title = document.getElementById('title');
@@ -116,7 +119,23 @@ img{display:block;max-width:100%;height:auto;width:auto}
       var snail = document.getElementById('art-snail');
       var restroom = document.getElementById('art-restroom');
 
-      if (status === 'invalid') {
+      // Only ever link to our own API's unsubscribe route.
+      if (status === 'ok' && /^https:\/\/[a-z0-9.-]+\/api\/unsubscribe\?/i.test(unsub)) {
+        document.getElementById('unsub-link').href = unsub;
+        document.getElementById('unsub').style.display = 'block';
+      }
+
+      if (status === 'unsubscribed') {
+        chip.textContent = 'Unsubscribed';
+        title.innerHTML = 'You\u2019re <span class="hl">off the list.</span>';
+        msg.textContent = 'You will not get any more emails from Raised in SLC. If that was a mistake, just sign up again on the site.';
+      } else if (status === 'unsub_invalid') {
+        kite.style.display = 'none';
+        restroom.style.display = 'block';
+        chip.textContent = 'Bad link';
+        title.innerHTML = 'That link <span class="hl">didn\u2019t work.</span>';
+        msg.textContent = 'We could not read that unsubscribe link. Email hello@raisedinslc.org and we will take you off the list by hand.';
+      } else if (status === 'invalid') {
         // tedium: the snail says this is going to take another lap
         b.setProperty('--bg', 'var(--mustard)');
         b.setProperty('--lead', '#5a4c34');
